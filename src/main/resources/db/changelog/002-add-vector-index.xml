@@ -1,0 +1,20 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="
+                     http://www.liquibase.org/xml/ns/dbchangelog
+                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+
+    <changeSet id="2" author="me">
+        <sql>
+            SET CLUSTER SETTING feature.vector_index.enabled = true;
+            SET sql_safe_updates = false;
+            CREATE VECTOR INDEX documents_vector_idx ON documents (embedding vector_cosine_ops);
+        </sql>
+        <rollback>
+            DROP INDEX IF EXISTS documents_vector_idx;
+            SET CLUSTER SETTING feature.vector_index.enabled = false;
+            SET sql_safe_updates = true;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
