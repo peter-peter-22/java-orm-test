@@ -1,0 +1,115 @@
+type: collection.insomnia.rest/5.0
+name: orm
+meta:
+  id: wrk_d5ffcdab56244aad9dea978f845c2173
+  created: 1758977567493
+  modified: 1759062302197
+  description: ""
+collection:
+  - url: "{{ _.baseUrl }}/documents/get/4ac2c35b-3789-4cab-ad0c-685f9440d9b5"
+    name: Get a document
+    meta:
+      id: req_853c917a907149809d02ae8d2f63304a
+      created: 1758977567566
+      modified: 1759094743375
+      isPrivate: false
+      description: ""
+      sortKey: -1758977567566
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseUrl }}/documents/all"
+    name: Get all documents
+    meta:
+      id: req_b949860665554ff18eb366ca5f29c1c9
+      created: 1759062987246
+      modified: 1759083003293
+      isPrivate: false
+      description: ""
+      sortKey: -1759062987246
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseUrl }}/documents"
+    name: Add a document
+    meta:
+      id: req_4ae342246b6f403797f3fdc07b575de1
+      created: 1759066139021
+      modified: 1759093650712
+      isPrivate: false
+      description: ""
+      sortKey: -1759066139021
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"content":"test"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseUrl }}/documents/similar?query=test&topK=3"
+    name: Get similar documents
+    meta:
+      id: req_74edc8f3442c4b67a804806329bf0049
+      created: 1759094047208
+      modified: 1759094103719
+      isPrivate: false
+      description: ""
+      sortKey: -1759094047208
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_06e2842cb1dcd56dae1ffa89a6b22d509b125e50
+    created: 1758977567501
+    modified: 1758977567501
+environments:
+  name: Base Environment
+  meta:
+    id: env_06e2842cb1dcd56dae1ffa89a6b22d509b125e50
+    created: 1758977567499
+    modified: 1759062341573
+    isPrivate: false
+  data:
+    baseUrl: http://localhost:8080
