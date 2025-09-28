@@ -1,6 +1,9 @@
 package com.example.orm;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Array;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.UUID;
 
@@ -24,13 +27,13 @@ public class Document {
         this.content = content;
     }
 
-//    public float[] getEmbedding() {
-//        return embedding;
-//    }
-//
-//    public void setEmbedding(float[] embedding) {
-//        this.embedding = embedding;
-//    }
+    public float[] getEmbedding() {
+        return embedding;
+    }
+
+    public void setEmbedding(float[] embedding) {
+        this.embedding = embedding;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,13 +42,15 @@ public class Document {
     @Column(nullable = false)
     private String content;
 
-//    @Column(nullable = false, columnDefinition = "VECTOR(5)")
-//    private float[] embedding;
+    @Column(nullable = false)
+    @JdbcTypeCode(SqlTypes.VECTOR)
+    @Array(length = 5)
+    private float[] embedding;
 
     public Document() {}
 
     public Document(String content, float[] embedding) {
         this.content = content;
-//        this.embedding = embedding;
+        this.embedding = embedding;
     }
 }
