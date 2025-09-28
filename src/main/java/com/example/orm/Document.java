@@ -1,6 +1,8 @@
 package com.example.orm;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Array;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -9,32 +11,9 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "documents")
+@Getter
+@Setter
 public class Document {
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public float[] getEmbedding() {
-        return embedding;
-    }
-
-    public void setEmbedding(float[] embedding) {
-        this.embedding = embedding;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;

@@ -18,9 +18,7 @@ public class DocumentService {
     }
 
     public List<Document> findSimilarDocuments(float[] queryEmbedding, int topK) {
-        // Convert List<Double> to JSON array string for native query
-        String queryVec = queryEmbedding.toString().replace("[", "['").replace("]", "']"); // Rough JSON conversion; use Gson/Jackson for production
-        return repository.findSimilar(queryVec, topK);
+        return repository.findSimilar(queryEmbedding, topK);
     }
 
     public List<Document> all(){

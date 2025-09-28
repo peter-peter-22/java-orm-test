@@ -8,6 +8,6 @@ import java.util.UUID;
 
 public interface DocumentRepository extends JpaRepository<Document, UUID> {
 
-    @Query(value = "SELECT * FROM documents ORDER BY embedding <=> :queryEmbedding::vector LIMIT :topK", nativeQuery = true)
-    List<Document> findSimilar(@Param("queryEmbedding") String queryEmbedding, @Param("topK") int topK);
+    @Query(value = "SELECT * FROM documents ORDER BY embedding <=> (:queryEmbedding)::vector LIMIT :topK", nativeQuery = true)
+    List<Document> findSimilar(@Param("queryEmbedding") float[] queryEmbedding, @Param("topK") int topK);
 }

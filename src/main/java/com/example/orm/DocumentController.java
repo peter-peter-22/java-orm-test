@@ -20,7 +20,6 @@ public class DocumentController {
         return service.saveDocument(request.content(), embedding);
     }
 
-
     @GetMapping("/similar")
     public List<Document> similar(@RequestParam String query, @RequestParam(defaultValue = "5") int topK) {
         float[] queryEmbedding = generateEmbedding(query);
@@ -34,9 +33,7 @@ public class DocumentController {
 
     @GetMapping("/get/{id}")
     public Document get(@PathVariable String id){
-        Document test= service.getById(UUID.fromString(id));
-        System.out.print(test);
-        return test;
+        return service.getById(UUID.fromString(id));
     }
 
     private float[] generateEmbedding(String text) {
