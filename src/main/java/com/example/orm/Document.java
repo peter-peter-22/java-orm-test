@@ -1,7 +1,9 @@
 package com.example.orm;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Array;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -13,6 +15,8 @@ import java.util.UUID;
 @Table(name = "documents")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +29,6 @@ public class Document {
     @JdbcTypeCode(SqlTypes.VECTOR)
     @Array(length = 5)
     private float[] embedding;
-
-    public Document() {}
 
     public Document(String content, float[] embedding) {
         this.content = content;
