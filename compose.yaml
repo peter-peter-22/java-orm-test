@@ -1,6 +1,6 @@
 services:
   db:
-    # CLI: cockroach sql --insecure; use main;
+    # CLI: cockroach sql --insecure; use defaultdb;
     container_name: orm-cockroach-db-dev
     image: cockroachdb/cockroach:v25.3.2
     command: start-single-node --insecure
